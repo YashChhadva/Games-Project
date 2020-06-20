@@ -1,0 +1,16 @@
+var data = [['amitabh bachchan','tapsee pannu','pink','-'],
+['shahrukh khan' , 'kajol' , 'kuch kuch hota hai' , 'kuch kuch hota hai'],
+['shahid kapoor','tabu','haider','bismil'],
+['varun dhawan','alia bhatt','student of the year','ishq wala love'],
+['john abraham','mrunal thakur','batla house','o saki saki'],
+['abhishek bachchan','rani mukherjee','bunty aur babli','bunty aur babli'],
+['siddharth malhotra','parineeti chopra','hasee toh phasee','zehnaseeb'],
+['hrithik roshan','aishwariya rai bachchan','dhoom 2','dhoom'],
+['saif ali khan','vidya balan','parineeta','piya bole'],
+['aamir khan','zaira wasim','dangal','dangal'],
+['salman khan','jacqueline fernandez','kick','hangover'],
+['bobby deol','bipasha basu','players','ho gayi tun'],
+['abhay deol','katrina kaif','zindagi na milegi dobara','senorita'],
+['farhan akhtar','prachi desai','rock on!!','rock on'],
+['akshay kumar','taapsee pannu','baby','beparwah']
+];

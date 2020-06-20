@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	</head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style type="text/css">
+		.body{
+			background-image: url("images/background.jpg");
+		}
+		.div2{
+			padding-top:75px;
+			padding-left: 15%;
+			float:left;
+		}
+		.div3{
+			padding-top:75px;
+			float: left;
+		}
+		.div1{
+			padding: auto;
+			float: left;
+		}
+		.button{
+			height: 175px;
+			width: 175px;
+			padding: auto;
+			font-size: 100px;
+			border-radius: 10px;
+			background-color: white;
+			border: 2px solid #717D7E;
+			color: black;
+
+		}
+		.button:hover{
+			height: 175px;
+			width: 175px;
+			padding: auto;
+			font-size: 100px;
+			border-radius: 10px;
+			background-color: #717D7E;
+			color: white;
+		}
+
+		
+
+
+		.button:disabled{
+			height: 175px;
+			width: 175px;
+			padding: auto;
+			font-size: 100px;
+			border-radius: 10px;
+			background-color: #717D7E;
+			color: white;
+			-webkit-text-stroke-width: 1px; 
+            -webkit-text-stroke-color: black;
+		}
+		.button2{
+			padding: auto;
+			height: 175px;
+			width: 535px;
+			font-size: 100px;
+			border-radius: 10px;
+			background-color: white;
+			color: black;
+			border: 2px solid #f44336;
+		}
+		.button2:hover{
+			padding: auto;
+			height: 175px;
+			width: 535px;
+			font-size: 100px;
+			border-radius: 10px;
+			background-color: #f44336;
+			color: white;
+		}
+		.button2:diabled{
+			padding: auto;
+			height: 175px;
+			width: 535px;
+			font-size: 100px;
+			border-radius: 10px;
+			background-color: #f44336;
+			color: white;
+		}
+		.button3{
+			padding:auto;
+			border-radius: 50%;
+			font-size: 35px;
+			color: black;
+			background-color: white;
+			border: 2px solid #008CBA;
+		}
+		.button3:hover{
+			padding:auto;
+			border-radius: 50%;
+			font-size: 35px;
+			color: white;
+			background-color: #008CBA;
+		}
+		.button3:disabled{
+			padding:auto;
+			border-radius: 50%;
+			font-size: 35px;
+			color: white;
+			background-color: #008CBA;
+		}
+	</style>
+	<script type="text/javascript">
+		
+	</script>
+<body onload="init()" class="body">
+		<nav id="mainNavbar" class="navbar navbar-dark navbar-expand-md py-0 fixed-top">
+        <a href="landing.html" class="navbar-brand" id="link1">HOME</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navLinks">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="bollywood.html" class="nav-link" id="link2">BOLLYWOOD</a>
+                </li>
+                <li class="nav-item">
+                    <a href="ttt_v2.html" class="nav-link" id="link3">TIC-TAC-TOE</a>
+                </li>
+                <li class="nav-item">
+                    <a href="brick.html" class="nav-link" id="link4">BRICK BREAKER</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="link5">SPSLS</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+	<div class="div2">
+		<button class="button3" id="gm1" onclick="start(0);">SINGLE PLAYER</button>
+	</div>
+	<div class="div1">
+		<table class="table">
+			<tr>
+				<td>
+					<button class="button" id="btn1" onclick="f1(this.id);"></button>
+				</td>
+				<td>
+					<button class="button" id="btn2" onclick="f1(this.id);"></button>
+				</td>
+				<td>
+					<button class="button" id="btn3" onclick="f1(this.id);"></button>
+				</td>
+				</tr>
+			<tr>
+				<td>
+					<button class="button" id="btn4" onclick="f1(this.id);"></button>
+				</td>
+				<td>
+					<button class="button" id="btn5" onclick="f1(this.id);"></button>
+				</td>
+				<td>
+					<button class="button" id="btn6" onclick="f1(this.id);"></button>
+				</td>
+				</tr>
+			<tr>
+				<td>
+					<button class="button" id="btn7" onclick="f1(this.id);"></button>
+				</td>
+				<td>
+					<button class="button" id="btn8" onclick="f1(this.id);"></button>
+				</td>
+				<td>
+					<button class="button" id="btn9" onclick="f1(this.id);"></button>
+				</td>
+				</tr>
+			<tr>
+				<td colspan="3">
+						<button class="button2" id="reset" onclick="f3();">RESET</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="div3">
+		<button class="button3" id="gm2" onclick="start(1);">MULTI PLAYER</button>
+	</div>
+	<script type="text/javascript">
+		var c=0;
+		var gamemode;
+		var arr = new Array(3);
+		for (var i = 0; i < arr.length; i++) { 
+		    arr[i] = new Array(3); 
+		}   
+		function start(gm){
+			gamemode=gm;
+			document.getElementById("gm1").disabled=true;
+			document.getElementById("gm2").disabled=true;
+			document.getElementById("btn1").disabled=false;
+			document.getElementById("btn2").disabled=false;
+			document.getElementById("btn3").disabled=false;
+			document.getElementById("btn4").disabled=false;
+			document.getElementById("btn5").disabled=false;
+			document.getElementById("btn5").disabled=false;
+			document.getElementById("btn6").disabled=false;
+			document.getElementById("btn7").disabled=false;
+			document.getElementById("btn8").disabled=false;
+			document.getElementById("btn9").disabled=false;
+			document.getElementById("btn1").innerHTML="";
+			document.getElementById("btn2").innerHTML="";
+			document.getElementById("btn3").innerHTML="";
+			document.getElementById("btn4").innerHTML="";
+			document.getElementById("btn5").innerHTML="";
+			document.getElementById("btn6").innerHTML="";
+			document.getElementById("btn7").innerHTML="";
+			document.getElementById("btn8").innerHTML="";
+			document.getElementById("btn9").innerHTML="";			
+			if(gm==0){
+				document.getElementById("gm1").style.backgroundColor="#4CAF50";
+				document.getElementById("gm1").style.borderColor="#4CAF50";
+			}
+			else{
+				document.getElementById("gm2").style.backgroundColor="#4CAF50";
+				document.getElementById("gm2").style.borderColor="#4CAF50";
+			}
+		}
+		function init(){
+			document.getElementById("btn1").disabled=true;
+			document.getElementById("btn2").disabled=true;
+			document.getElementById("btn3").disabled=true;
+			document.getElementById("btn4").disabled=true;
+			document.getElementById("btn5").disabled=true;
+			document.getElementById("btn5").disabled=true;
+			document.getElementById("btn6").disabled=true;
+			document.getElementById("btn7").disabled=true;
+			document.getElementById("btn8").disabled=true;
+			document.getElementById("btn9").disabled=true;
+			document.getElementById("btn1").innerHTML="<-";
+			document.getElementById("btn2").innerHTML="";
+			document.getElementById("btn3").innerHTML="->";
+			document.getElementById("btn4").innerHTML="CH";
+			document.getElementById("btn5").innerHTML="OO";
+			document.getElementById("btn6").innerHTML="SE";
+			document.getElementById("btn7").innerHTML="O";
+			document.getElementById("btn8").innerHTML="N";
+			document.getElementById("btn9").innerHTML="E";
+		}
+		function f1(a) {
+			console.log("Game mode is "+gamemode);
+			console.log("C is "+c);
+			if(c%2==0)
+			{
+				//document.getElementById(a).innerHTML="X";	
+				// var img = document.createElement('img'); 
+	   //          img.src ="images/X.jpg"; 
+	   //          img.class="img";
+	   //          document.getElementById(a).appendChild(img);
+	   		document.getElementById(a).innerHTML='<img src="images/X.png" height="160px" width="160px" />';			
+				console.log("X");
+			}
+			else
+			{
+				//document.getElementById(a).innerHTML="O";
+				// var img = document.createElement('img'); 
+	   //          img.src ="images/O.png"; 
+	   //          img.class="img";
+	   //          document.getElementById(a).appendChild(img);
+	   			document.getElementById(a).innerHTML='<img src="images/O.png" height="160px" width="160px" />';
+				console.log("O");
+			}
+			switch(a)
+			{
+				case 'btn1':
+				arr[0][0]=c%2;
+				console.log(c%2);
+				console.log(arr[0][0]);
+				break;
+
+				case 'btn2':
+				arr[0][1]=c%2;
+				console.log(c%2);
+				console.log(arr[0][1]);
+				break;
+
+				case 'btn3':
+				arr[0][2]=c%2;
+				console.log(c%2);
+				console.log(arr[0][2]);
+				break;
+
+				case 'btn4':
+				arr[1][0]=c%2;
+				console.log(c%2);
+				console.log(arr[1][0]);
+				break;
+
+				case 'btn5':
+				arr[1][1]=c%2;
+				console.log(c%2);
+				console.log(arr[1][1]);
+				break;
+
+				case 'btn6':
+				arr[1][2]=c%2;
+				console.log(c%2);
+				console.log(arr[1][2]);
+				break;
+
+				case 'btn7':
+				arr[2][0]=c%2;
+				console.log(c%2);
+				console.log(arr[2][0]);
+				break;
+
+				case 'btn8':
+				arr[2][1]=c%2;
+				console.log(c%2);
+				console.log(arr[2][1]);
+				break;
+
+				case 'btn9':
+				arr[2][2]=c%2;
+				console.log(c%2);
+				console.log(arr[2][2]);
+				break;
+			}
+			document.getElementById(a).disabled=true;
+			if(c%2==0)
+				document.getElementById(a).style.backgroundColor="#f7c6c9";
+			else
+				document.getElementById(a).style.backgroundColor="#fdf4d3";
+			c++;
+			
+			if(gamemode==0&&c<9){
+				console.log("Now pc will play");
+				console.log("C is "+c);
+				buttons=["btn1","btn2","btn3","btn4","btn5","btn6","btn7","btn8","btn9"];
+				var pc;
+				do{
+  				pc=Math.trunc((((Math.random())*1000000))%9);
+  				}while(document.getElementById(buttons[pc]).disabled==true);
+  				var pcbutton=buttons[pc];
+				console.log("I'm here");
+				console.log(pcbutton);
+  				console.log(pc);
+  				console.log(buttons[pc]);
+  				
+				document.getElementById(pcbutton).disabled=true;
+				if(c%2==0)
+					document.getElementById(pcbutton).style.backgroundColor="#f7c6c9";
+				else
+					document.getElementById(pcbutton).style.backgroundColor="#fdf4d3";
+  				if(c%2==0)
+				{
+					//document.getElementById(a).innerHTML="X";	
+					// var img = document.createElement('img'); 
+		   //          img.src ="images/X.jpg"; 
+		   //          img.class="img";
+		   //          document.getElementById(a).appendChild(img);
+		   		document.getElementById(buttons[pc]).innerHTML='<img src="images/X.png" height="160px" width="160px" />';			
+					console.log("X");
+				}
+				else
+				{
+					//document.getElementById(a).innerHTML="O";
+					// var img = document.createElement('img'); 
+		   //          img.src ="images/O.png"; 
+		   //          img.class="img";
+		   //          document.getElementById(a).appendChild(img);
+		   			document.getElementById(buttons[pc]).innerHTML='<img src="images/O.png" height="160px" width="160px" />';
+					console.log("O");
+				}
+  				switch(buttons[pc])
+				{
+					case 'btn1':
+					arr[0][0]=c%2;
+					console.log(c%2);
+					console.log(arr[0][0]);
+					break;
+
+					case 'btn2':
+					arr[0][1]=c%2;
+					console.log(c%2);
+					console.log(arr[0][1]);
+					break;
+
+					case 'btn3':
+					arr[0][2]=c%2;
+					console.log(c%2);
+					console.log(arr[0][2]);
+					break;
+
+					case 'btn4':
+					arr[1][0]=c%2;
+					console.log(c%2);
+					console.log(arr[1][0]);
+					break;
+
+					case 'btn5':
+					arr[1][1]=c%2;
+					console.log(c%2);
+					console.log(arr[1][1]);
+					break;
+
+					case 'btn6':
+					arr[1][2]=c%2;
+					console.log(c%2);
+					console.log(arr[1][2]);
+					break;
+
+					case 'btn7':
+					arr[2][0]=c%2;
+					console.log(c%2);
+					console.log(arr[2][0]);
+					break;
+
+					case 'btn8':
+					arr[2][1]=c%2;
+					console.log(c%2);
+					console.log(arr[2][1]);
+					break;
+
+					case 'btn9':
+					arr[2][2]=c%2;
+					console.log(c%2);
+					console.log(arr[2][2]);
+					break;
+				}				
+				c++;			
+
+			}
+			var flag=0;
+			flag=f2(flag);			
+			if(document.getElementById("btn1").disabled==true&&document.getElementById("btn2").disabled==true&&document.getElementById("btn3").disabled==true&&document.getElementById("btn4").disabled==true&&document.getElementById("btn5").disabled==true&&document.getElementById("btn5").disabled==true&&document.getElementById("btn6").disabled==true&&document.getElementById("btn7").disabled==true&&document.getElementById("btn8").disabled==true&&document.getElementById("btn9").disabled==true&&flag==0)
+				Tie();
+		}
+
+		function f2(flag) {
+			if((arr[0][0]==arr[0][1])&&(arr[0][1]==arr[0][2])&&arr[0][0]!=undefined)
+			{
+				(arr[0][0]==0?XWins():OWins());
+				flag=1;
+				//location.reload();
+			}
+			else if((arr[1][0]==arr[1][1])&&(arr[1][1]==arr[1][2])&&arr[1][0]!=undefined)
+			{
+				(arr[1][0]==0?XWins():OWins());
+				flag=1;
+				//location.reload();
+			}
+			else if((arr[2][0]==arr[2][1])&&(arr[2][1]==arr[2][2])&&arr[2][0]!=undefined)
+			{
+				(arr[2][0]==0?XWins():OWins());
+				flag=1;
+				//location.reload();
+			}
+			else if((arr[0][0]==arr[1][0])&&(arr[1][0]==arr[2][0])&&arr[0][0]!=undefined)
+			{
+				(arr[0][0]==0?XWins():OWins());
+				flag=1;
+				//location.reload();
+			}
+			else if((arr[0][1]==arr[1][1])&&(arr[1][1]==arr[2][1])&&arr[0][1]!=undefined)
+			{
+				(arr[0][1]==0?XWins():OWins());
+				flag=1;
+				//location.reload();
+			}
+			else if((arr[0][2]==arr[1][2])&&(arr[1][2]==arr[2][2])&&arr[0][2]!=undefined)
+			{
+				(arr[0][2]==0?XWins():OWins());
+				flag=1;
+				//location.reload();
+			}
+			else if((arr[0][0]==arr[1][1])&&(arr[1][1]==arr[2][2])&&arr[0][0]!=undefined)
+			{
+				(arr[0][0]==0?XWins():OWins());
+				flag=1;
+				//location.reload();
+			}
+			else if((arr[0][2]==arr[1][1])&&(arr[1][1]==arr[2][0])&&arr[0][2]!=undefined)
+			{
+				(arr[0][2]==0?XWins():OWins());
+				flag=1;
+				//location.reload();
+			}
+			return flag;
+		}
+
+		function f3()
+		{
+			location.reload();
+		}
+
+		function XWins()
+		{
+			document.getElementById("btn1").disabled=true;
+			document.getElementById("btn2").disabled=true;
+			document.getElementById("btn3").disabled=true;
+			document.getElementById("btn4").disabled=true;
+			document.getElementById("btn5").disabled=true;
+			document.getElementById("btn5").disabled=true;
+			document.getElementById("btn6").disabled=true;
+			document.getElementById("btn7").disabled=true;
+			document.getElementById("btn8").disabled=true;
+			document.getElementById("btn9").disabled=true;
+			document.getElementById("btn1").innerHTML="";
+			document.getElementById("btn2").innerHTML='<img src="images/X.png" height="160px" width="160px" />';
+			document.getElementById("btn3").innerHTML="";
+			document.getElementById("btn4").innerHTML="";
+			document.getElementById("btn5").innerHTML="";
+			document.getElementById("btn6").innerHTML="";
+			document.getElementById("btn7").innerHTML="W";
+			document.getElementById("btn8").innerHTML="O";
+			document.getElementById("btn9").innerHTML="N";
+		}
+
+		function OWins()
+		{
+			document.getElementById("btn1").disabled=true;
+			document.getElementById("btn2").disabled=true;
+			document.getElementById("btn3").disabled=true;
+			document.getElementById("btn4").disabled=true;
+			document.getElementById("btn5").disabled=true;
+			document.getElementById("btn5").disabled=true;
+			document.getElementById("btn6").disabled=true;
+			document.getElementById("btn7").disabled=true;
+			document.getElementById("btn8").disabled=true;
+			document.getElementById("btn9").disabled=true;
+			document.getElementById("btn1").innerHTML="";
+			document.getElementById("btn2").innerHTML='<img src="images/O.png" height="160px" width="160px" />';
+			document.getElementById("btn3").innerHTML="";
+			document.getElementById("btn4").innerHTML="";
+			document.getElementById("btn5").innerHTML="";
+			document.getElementById("btn6").innerHTML="";
+			document.getElementById("btn7").innerHTML="W";
+			document.getElementById("btn8").innerHTML="O";
+			document.getElementById("btn9").innerHTML="N";
+		}
+
+		function Tie() {
+			document.getElementById("btn1").disabled=true;
+			document.getElementById("btn2").disabled=true;
+			document.getElementById("btn3").disabled=true;
+			document.getElementById("btn4").disabled=true;
+			document.getElementById("btn5").disabled=true;
+			document.getElementById("btn5").disabled=true;
+			document.getElementById("btn6").disabled=true;
+			document.getElementById("btn7").disabled=true;
+			document.getElementById("btn8").disabled=true;
+			document.getElementById("btn9").disabled=true;
+			document.getElementById("btn1").innerHTML="I";
+			document.getElementById("btn2").innerHTML="T'";
+			document.getElementById("btn3").innerHTML="S";
+			document.getElementById("btn4").innerHTML="";
+			document.getElementById("btn5").innerHTML="A";
+			document.getElementById("btn6").innerHTML="";
+			document.getElementById("btn7").innerHTML="T";
+			document.getElementById("btn8").innerHTML="I";
+			document.getElementById("btn9").innerHTML="E";
+		}
+	</script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+	</body>
+</html>

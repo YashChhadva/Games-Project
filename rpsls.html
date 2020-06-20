@@ -1,0 +1,213 @@
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style type="text/css">
+		.div1{
+			margin-top: 75px;
+			margin-left: 75px;
+			padding: auto;
+			float: left;
+		}
+		#link1,#link2,#link3,#link4,#link5{
+    		color: black;
+    	}
+    	
+		.div2{
+			padding: auto; 
+			padding-top: 100px;
+			padding-left: 75px;
+			float: left;
+		}
+		.div3{
+			padding-top: 285px;	
+			padding: auto;
+			padding-left:75px; 
+			float:left;
+		}
+		.div4{
+			padding: auto; 
+			padding-top: 80px;	/*		
+			padding-left: 75px;*/
+			float: left;
+		}
+		.div5{
+			margin-top: 125px;
+			width: 300px;
+			padding:auto;
+			float: left;
+		}
+		.btn1{
+			padding: auto;
+			height: 100px;
+			width: 100px;
+			border-radius: 50%;
+			background-color: white;
+			color: black;
+			border: 2px solid black;
+		}
+		.btn2{
+			padding: auto;
+			font-size: 25px;
+			border-radius: 10px;
+			background-color: white;
+			border: 2px solid #717D7E;
+			color: black;
+
+		}
+		.btn2:hover{
+			padding: auto;
+			font-size: 25;
+			border-radius: 10px;
+			background-color: #717D7E;
+			color: white;
+		}
+	</style>
+</head>
+<body onload="rules()" id="body">
+		<nav id="mainNavbar" class="navbar navbar-dark navbar-expand-md py-0 fixed-top">
+        <a href="landing.html" class="navbar-brand" id="link1">HOME</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navLinks">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="bollywood.html" class="nav-link" id="link2">BOLLYWOOD</a>
+                </li>
+                <li class="nav-item">
+                    <a href="ttt_v2.html" class="nav-link" id="link3">TIC-TAC-TOE</a>
+                </li>
+                <li class="nav-item">
+                    <a href="brick.html" class="nav-link" id="link4">BRICK BREAKER</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="link5">SPSLS</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+	<center>
+		<h1 id="h1"></h1>
+	</center>
+	<div class="div1">
+		<button class="btn1" id="0" onclick="play(this.id)" title="ROCK"><img src="images/r.png" height="90px" width="90px" /></button><br><br>
+		<button class="btn1" id="1" onclick="play(this.id)" title="PAPER"><img src="images/p.png" height="90px" width="90px" /></button><br><br>
+		<button class="btn1" id="2" onclick="play(this.id)" title="SCISSOR"><img src="images/sc.png" height="90px" width="90px" /></button><br><br>
+		<button class="btn1" id="3" onclick="play(this.id)" title="LIZARD"><img src="images/l.png" height="90px" width="90px" /></button><br><br>
+		<button class="btn1" id="4" onclick="play(this.id)" title="SPOCK"><img src="images/sp.png" height="90px" width="90px" /></button>
+	</div>
+	<div class="div2"><img src="images/player.png" height="400px" /><br>
+		<center><img id="player" height="160px" width="160px" /></center></div>
+	<div class="div3"><img src="images/vs.png" height="90px" width="90px" /></div> 
+	<div class="div4"><img src="images/pc.png" height="400px" /><br><br>
+		<center><img id="pc" height="160px" width="160px" /></center></div>
+	<div class="div5"><center>
+		<button class="btn2" id="0" onclick="rules()" title="RULES">RULES</button></center>
+		<br>
+		<img id="image" src="images/rules.png" height="350px" width="350px" />
+	</div>
+
+	<script type="text/javascript">
+		var images=['images/r.png','images/p.png','images/sc.png','images/l.png','images/sp.png'];
+		var win = new Array(5);
+		var c=0;
+		for(var i=0;i<win.length;i++){
+			win[i]= [];
+		}
+		win[0][0]=0;
+		win[0][1]=1;
+		win[0][2]=-1;
+		win[0][3]=-1;
+		win[0][4]=1;
+
+		win[1][0]=-1;
+		win[1][1]=0;
+		win[1][2]=1;
+		win[1][3]=1;
+		win[1][4]=-1;
+
+		win[2][0]=1;
+		win[2][1]=-1;
+		win[2][2]=0;
+		win[2][3]=-1;
+		win[2][4]=1;
+
+		win[3][0]=1;
+		win[3][1]=-1;
+		win[3][2]=1;
+		win[3][3]=0;
+		win[3][4]=-1;
+
+		win[4][0]=-1;
+		win[4][1]=1;
+		win[4][2]=-1;
+		win[4][3]=1;
+		win[4][4]=0;
+
+		var player;
+		// var comp=Math.floor(Math.random()*Math.floor(3));
+		function play(a){
+			document.getElementById("player").style.visibility = 'visible';
+			document.getElementById("pc").style.visibility = 'visible';
+			document.getElementById("h1").style.visibility = 'visible';
+			player=a;
+			var comp=Math.trunc((((Math.random())*1000000))%5);
+			var comps= new Array(5);
+			comps[0]="ROCK";
+			comps[1]="PAPER";
+			comps[2]="SCISSOR";
+			comps[3]="LIZARD";
+			comps[4]="SPOCK";
+			//alert(comp);
+			//location.reload();
+			switch(win[player][comp]){
+			case 1:
+			console.log("LOST\nCOMP WAS "+comps[comp]);
+			document.body.style.backgroundColor="#ffc0cb";
+			document.getElementById("h1").innerHTML="YOU LOST";
+			//location.reload();
+			//alert(comps[comp]);
+			break;
+			
+			case 0:
+			console.log("TIE\nCOMP WAS "+comps[comp]);
+			document.body.style.backgroundColor="#fdf4d3";
+			document.getElementById("h1").innerHTML="IT'S A TIE";
+			// location.reload();
+			//alert(comps[comp]);
+			break;
+			
+			case-1:
+			console.log("WON\nCOMP WAS "+comps[comp]);
+			document.body.style.backgroundColor="#c0f030";
+			document.getElementById("h1").innerHTML="YOU WON";
+			// location.reload();
+			//alert(comps[comp]);
+			break;
+			}
+			document.getElementById("player").src=images[player];
+			document.getElementById("pc").src=images[comp];
+			// location.reload();
+		}	
+		function rules() {
+					console.log(c);
+					if(c==0){
+						document.body.style.backgroundColor="#fdf4d3";
+						document.getElementById("player").style.visibility = 'hidden';
+						document.getElementById("pc").style.visibility = 'hidden';
+						document.getElementById("h1").style.visibility='hidden';
+					}					
+					if(c%2==0)
+						document.getElementById("image").style.visibility = 'hidden';
+					else
+						document.getElementById("image").style.visibility = 'visible';			
+					c++;
+				}		
+	</script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
